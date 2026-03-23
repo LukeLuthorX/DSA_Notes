@@ -12,7 +12,8 @@ class Solution {
     bool solveUtil(int index, int target, vector<int>& arr, vector<vector<int>>&dp){
         if(target == 0){
             return true;
-        }
+        }//this condition could have been inside index == 0 cond, 
+        //but this helps outside more, for pruning purpose
         if(index == 0){
             return (target == arr[0]);
         }
@@ -153,10 +154,10 @@ link - [Minimum sum partition | Practice | GeeksforGeeks](https://www.geeksforge
 > - also, if you see the pattern of getting the values in tabulation, you will see they repeat, so we can instead find it for sum/2.
 
 ```cpp
-I was solving this problem: Given an array arr[] containing non-negative integers, the task is to divide it into two sets set1 and set2 such that the absolute difference between their sums is minimum and find the minimum difference. made this solution, not sure where am I failing:
-
-public: int minDifference(vector<int>& arr) { int sum = accumulate(arr.begin(), arr.end(), 0);
-
+class Solution {
+public: 
+int minDifference(vector<int>& arr) { 
+	int sum = accumulate(arr.begin(), arr.end(), 0);
     //finding all possible target values exist or not till sum
     //this is naturally obtained using tabulation approach
     int n = arr.size();
@@ -388,7 +389,7 @@ class Solution {
         if(dp[index][capacity] != -1) return dp[index][capacity];
         int notpick = 0 + solveUtil(index-1,capacity,val,wt,dp);
         int pick = 0;
-        if(capacity>=wt[index]) pick = val[index] + solveUtil(index,capacity-wt[index],val,wt,dp);;
+        if(capacity>=wt[index]) pick = val[index] + solveUtil(index,capacity-wt[index],val,wt,dp);
         
         return dp[index][capacity] = max(pick,notpick);
         

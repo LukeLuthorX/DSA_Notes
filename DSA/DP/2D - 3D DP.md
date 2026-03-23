@@ -5,6 +5,10 @@
 link - [Geek's Training | Practice | GeeksforGeeks](https://www.geeksforgeeks.org/problems/geeks-training/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=geeks-training)
 
 we maintain a state for index and one state for the operation done on activity on **last** day, last = $0,1,2,3$ , where 0,1,2 are the indices of the matrix or the three activities and $3$ is the initial value of last so that all the activities are picked on the first iteration on recurence relation
+`dp[n-1][last]` = till n-1 days whats the max points you can get
+`dp[3][last]` = days 0 - 3 => max points you can get
+
+recursion -> think the function in terms of index, write base case, do stuff on index, return max, also think in terms of how final iteration would look like, the top, and subproblems in recursions would solve themselves, so top-down thinking
 
 **memoization -** 
 ```cpp
@@ -187,11 +191,12 @@ public:
 ```
 
 ##### Unique Path - 2
+link - [Unique Paths II](https://leetcode.com/problems/unique-paths-ii/)
 1 means obstacle so add this condition at top and done.
 `if(i>=0 && j>=0 && obstacleGrid[i][j]==1) return 0;`
 
 ##### Minimum Path Sum
-
+link - [Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/)
 almost the same as all unique paths of travelling from $(0,0)$ to $(m-1,n-1)$, just you have to take the minimum of up and left this time and return high value if out of bound since it isn't considered.
 
 **memoization -** 
@@ -303,7 +308,8 @@ public:
 };
 ```
 
-##### Further Space Reduction
+**Further Space Reduction**
+
 ```cpp
     int minimumTotal(vector<vector<int>>& triangle) {
         int n = triangle.size();
